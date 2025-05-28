@@ -28,6 +28,12 @@ This project aims to **collect, normalize, curated and publish** these mappings 
 
 ## What is in this repository
 - `abbreviations.smi` – a machine-readable dictionary for structural group abbreviations on chemical drawings
+  - It is a two-column, tab separated text file, the first column contains the abbreviation and the second column holds the corresponding SMILES, using an asterisk (`*`) to indicate the attachment point
+  | Abbreviation | SMILES/SMARTS |
+  | ------------ | ------------- |
+  | `C`          | `*c1ccc(F)cc1`| 
+  | `–OCH2O–`    | `*OCO*`       |
+  | `MeO`        | `CO[*]`       |
 - TODO more to add
 
 ## Contributing
