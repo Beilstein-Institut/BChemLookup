@@ -27,7 +27,7 @@ This project aims to **collect, normalize, curated and publish** these mappings 
 - Enable community contribution and review for open data curation
 
 ## What is in this repository
-- `abbreviations.smiles` – a machine-readable dictionary for structural group abbreviations on chemical drawings
+- `abbreviations.smi` – a machine-readable dictionary for structural group abbreviations on chemical drawings
 - TODO more to add
 
 ## Contributing
