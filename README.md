@@ -1,3 +1,5 @@
+![License: CC0 1.0](https://img.shields.io/badge/CC0--1.0-lightgrey?style=for-the-badge)
+
 # 🧪 BChemLookups
 
 ## **An Open Science Initiative for Mapping Common Chemical Abbreviations**
@@ -50,7 +52,7 @@ We really appreciate your help in keeping things nice and tidy by only modifying
 Please include in the commentary section of the pull request a short description or common use of your changes and a reference or example source, if possible.
 
 ## License
-All data in this repository is released under the **TODO: add license here**. Use it freely in research, software, education, or commercial applications.
+All data in this repository is released under the **[CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/)**. Use it freely in research, software, education, or commercial applications.
 
 ## Acknowledgments
 This project is inspired by the needs of the cheminformatics community, and we thank the many open-source projects that aim to make chemical knowledge more [FAIR (Findable, Accessible, Interoperable, Reusable)](https://www.go-fair.org/fair-principles/).
