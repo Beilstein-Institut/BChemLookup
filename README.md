@@ -58,4 +58,4 @@ All data in this repository is released under the **[CC0 1.0 Universal license](
 This project is inspired by the needs of the cheminformatics community, and we thank the many open-source projects that aim to make chemical knowledge more [FAIR (Findable, Accessible, Interoperable, Reusable)](https://www.go-fair.org/fair-principles/).
 
 ## Feedback? 
-Open an issue or contact the maintainers. **(TODO: add generic beilstein mail)**
+Open an issue or contact the maintainers: **open-source@beilstein-institut.de**.
