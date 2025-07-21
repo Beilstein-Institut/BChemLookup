@@ -1,4 +1,4 @@
-![License: CC0 1.0](https://img.shields.io/badge/CC0--1.0-lightgrey?style=for-the-badge)
+[![License: CC0 1.0](https://img.shields.io/badge/CC0--1.0-lightgrey?style=for-the-badge)](https://creativecommons.org/publicdomain/zero/1.0/)
 
 # 🧪 BChemLookups
 
