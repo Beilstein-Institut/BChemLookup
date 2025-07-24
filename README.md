@@ -1,6 +1,6 @@
 [![License: CC0 1.0](https://img.shields.io/badge/CC0--1.0-lightgrey?style=for-the-badge)](https://creativecommons.org/publicdomain/zero/1.0/)
 
-# 🧪 BChemLookups
+# 🧪 BChemLookup
 
 ## **An Open Science Initiative for Mapping Common Chemical Abbreviations**
 
@@ -37,7 +37,6 @@ This project aims to **collect, normalize, curated and publish** these mappings 
   | `C`          | `*c1ccc(F)cc1`| 
   | `–OCH2O–`    | `*OCO*`       |
   | `MeO`        | `CO[*]`       |
-- TODO more to add
 
 ## Contributing
 We believe the best resource is a community-built one, so you are welcome to contribute.
