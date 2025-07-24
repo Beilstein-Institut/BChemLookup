@@ -54,7 +54,8 @@ Please include in the commentary section of the pull request a short description
 All data in this repository is released under the **[CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/)**. Use it freely in research, software, education, or commercial applications.
 
 ## Acknowledgments
-This project is inspired by the needs of the cheminformatics community, and we thank the many open-source projects that aim to make chemical knowledge more [FAIR (Findable, Accessible, Interoperable, Reusable)](https://www.go-fair.org/fair-principles/).
+This project is inspired by the needs of the cheminformatics community, and we thank the many open-source projects that aim to make chemical knowledge more [FAIR (Findable, Accessible, Interoperable, Reusable)](https://www.go-fair.org/fair-principles/).  
+We would like to express our gratitude to Nicole Jung and her team from KIT for their inspiring talks and discussions.
 
 ## Feedback? 
 Open an issue or contact the maintainers: **open-source@beilstein-institut.de**.
