@@ -16,7 +16,7 @@ This open-science repository aims to gather, curate, and share a comprehensive s
 | `Boc`        | tert-Butoxycarbonyl | `OC(C)(C)C=O` | Amine protecting group    |
 | `Et`         | Ethyl               | `CC`          | Alkyl chain               |
 
-This project aims to **collect, normalize, curated and publish** these mappings as **open source** structured data and human readable.
+This project aims to **collect, normalize, curate and publish** these mappings as **open source** structured data and human readable.
 
 ## Goals
 
