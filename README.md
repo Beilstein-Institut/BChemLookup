@@ -31,8 +31,9 @@ This project aims to **collect, normalize, curate and publish** these mappings a
 ## What is in this repository
 - `abbreviations.smi` – a machine-readable dictionary for structural group abbreviations on chemical drawings
   - It is a two-column, tab separated text file, the first column contains the abbreviation and the second column holds the corresponding SMILES, using an asterisk (`*`) to indicate the attachment point
+  - The initial abbreviations list contains the most common abbreviations found in the [Beilstein Journal of Organic Chemistry](https://www.beilstein-journals.org/bjoc/home) articles. The abbreviations are translated and reviewed into structures and SMILES by our chemical experts.  
   
-  | Abbreviation | SMILES/SMARTS |
+  | Abbreviation | SMILES        |
   | ------------ | ------------- |
   | `C`          | `*c1ccc(F)cc1`| 
   | `–OCH2O–`    | `*OCO*`       |
