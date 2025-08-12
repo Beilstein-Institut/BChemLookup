@@ -1,0 +1,74 @@
+# This is a basic workflow to help you get started with Actions
+
+name: Check for duplicates on merge
+
+# Controls when the workflow will run
+on:
+  # Triggers the workflow on push or pull request events but only for the "main" branch
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+
+  # Allows you to run this workflow manually from the Actions tab
+  workflow_dispatch:
+
+# A workflow run is made up of one or more jobs that can run sequentially or in parallel
+jobs:
+  check-duplicates:
+    runs-on: ubuntu-latest
+    permissions:
+      contents: read
+      pull-requests: write
+      
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v4
+        with:
+          fetch-dept: 0
+  
+      - name: Save old list (before merge)
+        run: |
+          git show HEAD^1:abbreviations.smi | sort -u > /tmp/old_list.smi
+  
+      - name: Save new list (after merge)
+        run: |
+          cat abbreviations.smi | sort -u > /tmp/new_list.smi
+  
+      - name: Extract newly added lines
+        run: |
+          comm -13 /tmp/old_list.smi /tmp/new_list.smi > /tmp/added.smi
+          echo "Added lines:"
+          cat /tmp/added.smi
+          
+      - name: Find duplicates in added lines
+        id: check_dupes
+        run: |
+          DUPES=$(grep -Fxf /tmp/old_list.smi /tmp/added.smi || true)
+          echo "duplicates<<EOF" >> $GITHUB_OUTPUT
+          echo "$DUPES" >> $GITHUB_OUTPUT
+          echo "EOF" >> $GITHUB_OUTPUT
+          if [ -n "$DUPES" ]; then
+            echo "Duplicate entries found:"
+            echo "$DUPES"
+            exit 1
+          else
+            echo "No duplicates"
+          fi
+
+      - name: Find merged PR number
+        if: failure()
+        id: find_pr
+        run: |
+          PR=$(gh pr list --state merged --search "$(git rev-parse HEAD)" --json number --jq '.[0].number' || echo "")
+          echo "pr_number=$PR" >> $GITHUB_OUTPUT
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+
+      - name: Comment on PR with duplicates
+        if: failure() && steps.find_pr.outputs.pr_number != ''
+        run: |
+          gh pr comment ${{ steps.find_pr.outputs.pr_number }} --body $'**Duplicate entries detected in your PR**\n\n```\n${{ steps.check_dupes.outputs.duplicates }}\n```'
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
+  
