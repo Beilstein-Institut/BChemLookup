@@ -257,3 +257,18 @@ SEt	CCS[*]
 SnBu3	[*][Sn](CCCC)(CCCC)CCCC
 TMSE	C[Si](C)(C)CC[*]
 n-Hexyl	CCCCCC[*]
+AAM	O=C1C2=CC=CC=C2N[*]N1
+ABn	[N-]=[N+]=NC1=CC=C(C=C1)C[*]
+ABO	[*]C1(O2)OCCC2CO1
+Ac	O=C([*])C
+ACBZ	O=C([*])OCC1=CC=C(N=[N+]=[N-])C=C1
+AcHmb	COC1=CC=C(C(OC(C)=O)=C1)C[*]
+Acm	CC(NC[*])=O
+Ad	[*]C12CC3CC(C2)CC(C3)C1
+ADMB	O=C(O[*])C(C)(C)CCOC(C)=O
+Adoc	O=C([*])OC12CC3CC(C2)CC(C3)C1
+Adpoc	O=C([*])OC(C)(C12CC3CC(C2)CC(C3)C1)C
+Alloc O=C([*])OCC=C
+AOC	O=C([*])OCC=C
+
+
