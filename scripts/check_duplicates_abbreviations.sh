@@ -1,6 +1,6 @@
 #!/bin/bash
 if [ ! -f abbreviations.smi ]; then
-  echo "abbreviatio.smi file not found!"
+  echo "abbreviations.smi file not found!"
   exit 1
 fi  
 
