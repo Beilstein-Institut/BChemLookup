@@ -4,11 +4,13 @@ if [ ! -f abbreviations.smi ]; then
   exit 1
 fi  
 
-duplicates=$(sort abbreviations.smi | uniq -d)
-if [ -n "$duplicates" ]; then
-  echo "Duplicate entries found in abbreviations.smi:"
-  echo "$duplicates"
-  exit 1
-fi 
+# Extract the string before the first space on each line (abbreviation)
+cut -d' ' -f1 abbreviations.smi | sort | uniq -d > /tmp/duplicates.txt
 
-echo "No duplicate entries found."
+if [ -s /tmp/duplicates.txt ]; then
+  echo "Duplicate abbreviations found (before first space):"
+  cat /tmp/duplicates.txt
+  exit 1
+fi
+
+echo "No duplicate abbreviations found (before first space)."
