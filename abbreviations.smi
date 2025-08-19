@@ -270,5 +270,4 @@ Adoc	O=C([*])OC12CC3CC(C2)CC(C3)C1
 Adpoc	O=C([*])OC(C)(C12CC3CC(C2)CC(C3)C1)C
 Alloc O=C([*])OCC=C
 AOC	O=C([*])OCC=C
-
-
+Bns O=S(CC1=CC=CC=C1)([O*])=O

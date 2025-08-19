@@ -1,0 +1,17 @@
+name: Check Abbreviations for Duplicates
+
+on:
+  push:
+    paths:
+      - abbreviations.smi
+  pull_request:
+    paths:
+      - abbreviations.smi
+
+jobs:
+  check-duplicates:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v3
+      - name: Run duplicate check
+        run: ./scripts/check_duplicates_abbreviations.sh
