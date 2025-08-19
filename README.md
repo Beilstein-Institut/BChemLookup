@@ -49,7 +49,8 @@ To contribute:
 
 We really appreciate your help in keeping things nice and tidy by only modifying one list in each pull request.
 
-Please include in the commentary section of the pull request a short description or common use of your changes and a reference or example source, if possible.
+Please check for potential copyright infringements and ensure that the data provided is suitable to be included in a CC0-licensed work before contributing.
+Please include in the commentary section of the pull request a short description or common use of your changes and state the source of the data.
 
 ## License
 All data in this repository is released under the **[CC0 1.0 Universal license](https://creativecommons.org/publicdomain/zero/1.0/)**. Use it freely in research, software, education, or commercial applications.
