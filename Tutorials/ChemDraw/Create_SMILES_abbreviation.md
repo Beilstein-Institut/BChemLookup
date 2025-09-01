@@ -1,6 +1,6 @@
 # How to generate a SMILES for an abbreviation?
 
-- Draw the substructure/protective group you want to abbreviate as normal in ChemDraw; for example the p-Methoxybenzyl (PMB) protective group: </br>
+- Draw the substructure/protective group you want to abbreviate as a normal structure in ChemDraw; for example the p-Methoxybenzyl (PMB) protective group: </br>
     ![PMB_raw](./imgs/PMB_raw.png)
 - Add an 'any atom' at the position where the protective group will be connected to the main structure: </br>
     ![PMB_AnyAtom](./imgs/PMB_AnyAtom.png)
