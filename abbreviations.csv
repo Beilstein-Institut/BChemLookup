@@ -7,7 +7,7 @@ NH2,N
 –OCH2O–,*OCO*
 s-Bu,*C(C)CC
 i-Pr,*C(C)C
-2,6-(CH3)2C6H3,*C1=C(C)C=CC=C1(C)
+"2,6-(CH3)2C6H3",*C1=C(C)C=CC=C1(C)
 PMB,*OCC1=CC=C(C=C1)OC
 Bpin,CC1(C)OB([*])OC1(C)C
 PMP,COC1=CC=C([*])C=C1
@@ -134,7 +134,7 @@ O-n-C8H17,CCCCCCCCO[*]
 OBn,[*]OCC1=CC=CC=C1
 OHC,O=C[*]
 PO3Bn2,O=P(OCC1=CC=CC=C1)([*])OCC2=CC=CC=C2
-Py,2	[*]C1=NC=CC=C1
+"Py 2",[*]C1=NC=CC=C1
 SCE,[*]SCCC#N
 TBSO,C[Si](C(C)(C)C)(O[*])C
 decanyl,CCCCCCCCCC[*]
@@ -257,3 +257,17 @@ SEt,CCS[*]
 SnBu3,[*][Sn](CCCC)(CCCC)CCCC
 TMSE,C[Si](C)(C)CC[*]
 n-Hexyl,CCCCCC[*]
+AAM,O=C1C2=CC=CC=C2N[*]N1
+ABn,[N-]=[N+]=NC1=CC=C(C=C1)C[*]
+ABO,[*]C1(O2)OCCC2CO1
+Ac,O=C([*])C
+ACBZ,O=C([*])OCC1=CC=C(N=[N+]=[N-])C=C1
+AcHmb,COC1=CC=C(C(OC(C)=O)=C1)C[*]
+Acm,CC(NC[*])=O
+Ad,[*]C12CC3CC(C2)CC(C3)C1
+ADMB,O=C(O[*])C(C)(C)CCOC(C)=O
+Adoc,O=C([*])OC12CC3CC(C2)CC(C3)C1
+Adpoc,O=C([*])OC(C)(C12CC3CC(C2)CC(C3)C1)C
+Alloc,O=C([*])OCC=C
+AOC,O=C([*])OCC=C
+Bns,O=S(CC1=CC=CC=C1)([O*])=O
