@@ -1,0 +1,192 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>BChemLookup</title>
+
+  <!-- DataTables -->
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.13.4/css/jquery.dataTables.min.css">
+
+  <style>
+    :root {
+      --accent: #0066cc;
+      --accent-light: #e6f0ff;
+      --border: #d0d0d0;
+      --text: #333;
+      --radius: 6px;
+      --font: "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    }
+
+    * { box-sizing: border-box; }
+
+    body {
+      margin: 0;
+      font-family: var(--font);
+      color: var(--text);
+      background: #fafafa;
+      display: flex;
+      flex-direction: column;
+      min-height: 100vh;
+    }
+
+    header {
+      background: white;
+      border-bottom: 1px solid var(--border);
+      padding: 1.2rem 2rem;
+    }
+
+    header h1 {
+      margin: 0;
+      font-size: 1.6rem;
+      font-weight: 600;
+      letter-spacing: 0.5px;
+    }
+
+    main {
+      flex: 1;
+      padding: 2rem;
+      max-width: 1200px;
+      width: 100%;
+      margin: 0 auto;
+    }
+
+    /* Tabs */
+    .tabs {
+      display: flex;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+
+    .tab {
+      padding: 0.6rem 1.2rem;
+      border: 1px solid var(--border);
+      border-bottom: 0;
+      background: white;
+      cursor: pointer;
+      border-radius: var(--radius) var(--radius) 0 0;
+      transition: background 0.2s, color 0.2s;
+    }
+
+    .tab:hover {
+      background: var(--accent-light);
+    }
+
+    .tab.active {
+      background: var(--accent);
+      color: white;
+      border-color: var(--accent);
+    }
+
+    /* Tab content */
+    .tabcontent {
+      display: none;
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 0 var(--radius) var(--radius) var(--radius);
+      padding: 1.2rem;
+      box-shadow: 0 2px 4px rgba(0,0,0,.05);
+    }
+
+    .tabcontent.active {
+      display: block;
+    }
+
+    /* Buttons */
+    button.download {
+      margin-bottom: 0.8rem;
+      padding: 0.5rem 1rem;
+      background: var(--accent);
+      color: white;
+      border: none;
+      border-radius: var(--radius);
+      cursor: pointer;
+      font-size: 0.9rem;
+      transition: background 0.2s;
+    }
+
+    button.download:hover {
+      background: #0050a3;
+    }
+
+    /* DataTables tweaks */
+    table.dataTable {
+      width: 100% !important;
+      margin: 0 !important;
+    }
+
+    .dataTables_wrapper .dataTables_filter input {
+      border: 1px solid var(--border);
+      border-radius: var(--radius);
+      padding: 0.3rem 0.5rem;
+    }
+  </style>
+</head>
+
+<body>
+  <header>
+    <h1>BChemLookup</h1>
+  </header>
+
+  <main>
+    <div class="tabs">
+      <div class="tab active" data-tab="table1">Abbreviations</div>
+      <!-- add more table tabs here -->
+    </div>
+
+    <div id="table1" class="tabcontent active">
+      <button class="download" id="download1">Download Filtered CSV</button>
+      <table id="abbrTable" class="display"></table>
+    </div>
+
+    <!-- add more tabcontent divs here -->
+    </div>
+  </main>
+
+  <!-- Scripts -->
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.datatables.net/1.13.4/js/jquery.dataTables.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+  <script>
+    function loadCSVIntoTable(csvPath, tableId, downloadBtnId) {
+      Papa.parse(csvPath, {
+        download: true,
+        header: true,
+        skipEmptyLines: true,
+        complete: function (results) {
+          const data = results.data;
+          const columns = Object.keys(data[0]).map(c => ({ title: c, data: c }));
+
+          const table = $('#' + tableId).DataTable({
+            data: data,
+            columns: columns,
+            pageLength: 25
+          });
+
+          $('#' + downloadBtnId).on('click', () => {
+            const filtered = table.rows({ search: 'applied' }).data().toArray();
+            const csv = Papa.unparse(filtered);
+            const link = document.createElement('a');
+            link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
+            link.download = tableId + '.csv';
+            link.click();
+          });
+        }
+      });
+    }
+
+    /* Initialise tables */
+    loadCSVIntoTable('abbreviations.csv', 'abbrTable', 'download1');
+    // add more tables as needed
+
+    /* Tab switching */
+    document.querySelectorAll('.tab').forEach(tab =>
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab, .tabcontent').forEach(el => el.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById(tab.dataset.tab).classList.add('active');
+      })
+    );
+  </script>
+</body>
+</html>
