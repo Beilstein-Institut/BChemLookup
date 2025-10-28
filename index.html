@@ -134,7 +134,7 @@
     </div>
 
     <div id="table1" class="tabcontent active">
-      <button class="download" id="download1">Download Filtered CSV</button>
+      <button class="download" id="download1">Download</button>
       <table id="abbrTable" class="display"></table>
     </div>
 
@@ -148,45 +148,67 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
 
   <script>
-    function loadCSVIntoTable(csvPath, tableId, downloadBtnId) {
-      Papa.parse(csvPath, {
-        download: true,
-        header: true,
-        skipEmptyLines: true,
-        complete: function (results) {
-          const data = results.data;
-          const columns = Object.keys(data[0]).map(c => ({ title: c, data: c }));
+    /* Load SMI file into DataTable */
+    function loadSMIIntoTable(smiPath, tableId, downloadBtnId) {
+    fetch(smiPath)
+      .then(response => response.text())
+      .then(text => {
+        const lines = text.trim().split('\n');
+        // Assume first line is header
+        const headers = lines[0].split(/\s+/);
+        const data = lines.slice(1).map(line => {
+          // Find last space or tab
+          const match = line.match(/^(.*)\s+([^\s]+)$/);
+          let obj = {};
+          if (match) {
+            obj[headers[0]] = match[1];
+            obj[headers[1]] = match[2];
+          } else {
+            // fallback: whole line as first column, second empty
+            obj[headers[0]] = line;
+            obj[headers[1]] = "";
+          }
+          return obj;
+        });
 
-          const table = $('#' + tableId).DataTable({
-            data: data,
-            columns: columns,
-            pageLength: 25
-          });
+        const columns = headers.map(h => ({ title: h, data: h }));
 
-          $('#' + downloadBtnId).on('click', () => {
-            const filtered = table.rows({ search: 'applied' }).data().toArray();
-            const csv = Papa.unparse(filtered);
-            const link = document.createElement('a');
-            link.href = URL.createObjectURL(new Blob([csv], { type: 'text/csv' }));
-            link.download = tableId + '.csv';
-            link.click();
-          });
-        }
+        const table = $('#' + tableId).DataTable({
+          data: data,
+          columns: columns,
+          pageLength: 25
+        });
+
+        $('#' + downloadBtnId).on('click', () => {
+          // Prepare CSV with space as delimiter
+          const rows = [headers.join('\t')];
+          const filtered = table.rows({ search: 'applied' }).data().toArray();
+          for (const row of filtered) {
+            rows.push(headers.map(h => row[h]).join('\t'));
+          }
+          const csv = rows.join('\n');
+          const link = document.createElement('a');
+          link.href = URL.createObjectURL(new Blob([csv], { type: 'text/plain' }));
+          link.download = tableId + '.smi';
+          link.click();
+        });
       });
     }
 
     /* Initialise tables */
-    loadCSVIntoTable('abbreviations.csv', 'abbrTable', 'download1');
+    loadSMIIntoTable('abbreviations.smi', 'abbrTable', 'download1');
     // add more tables as needed
 
     /* Tab switching */
-    document.querySelectorAll('.tab').forEach(tab =>
+    for (const tab of document.querySelectorAll('.tab')) {
       tab.addEventListener('click', () => {
-        document.querySelectorAll('.tab, .tabcontent').forEach(el => el.classList.remove('active'));
+        for (const el of document.querySelectorAll('.tab, .tabcontent')) {
+          el.classList.remove('active');
+        };
         tab.classList.add('active');
         document.getElementById(tab.dataset.tab).classList.add('active');
-      })
-    );
+      });
+    }
   </script>
 </body>
 </html>
