@@ -294,3 +294,8 @@ OCH3	[*]OC
 1-adamatyl	[*]C12CC3CC(C2)CC(C3)C1
 1-naphthylmethyl	[*]CC1=CC=CC2=C1C=CC=C2
 2-naphthylmethyl	[*]CC1=CC=C(C=CC=C2)C2=C1
+OMe-Ph	COc1ccc(*)cc1
+PhCONMe	[*]N(C)C(=O)C1=CC=CC=C1
+PhCONH	[*]NC(=O)C1=CC=CC=C1
+PhCOO	[*]OC(=O)C1=CC=CC=C1
+NHMe	[*]NC
