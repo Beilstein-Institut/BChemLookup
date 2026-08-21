@@ -4,13 +4,13 @@ if [ ! -f abbreviations.smi ]; then
   exit 1
 fi  
 
-# Extract the string before the first space on each line (abbreviation)
-cut -d' ' -f1 abbreviations.smi | sort | uniq -d > /tmp/duplicates.txt
+# Extract the abbreviation column (first tab-separated field)
+cut -f1 abbreviations.smi | sort | uniq -d > /tmp/duplicates.txt
 
 if [ -s /tmp/duplicates.txt ]; then
-  echo "Duplicate abbreviations found (before first space):"
+  echo "Duplicate abbreviations found:"
   cat /tmp/duplicates.txt
   exit 1
 fi
 
-echo "No duplicate abbreviations found (before first space)."
+echo "No duplicate abbreviations found."
