@@ -155,7 +155,7 @@
       .then(text => {
         const lines = text.trim().split('\n');
         // Assume first line is header
-        const headers = lines[0].split(/\s+/);
+        const headers = lines[0].replace(/^#\s*/, '').split(/\s+/);
         const data = lines.slice(1).map(line => {
           // Find last space or tab
           const match = line.match(/^(.*)\s+([^\s]+)$/);
