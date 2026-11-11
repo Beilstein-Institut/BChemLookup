@@ -336,3 +336,8 @@ p-Ph(n-Bu)	[*]C1=CC=C(CCCC)C=C1
 thiophen-2-yl	[*]C1=CC=CS1
 5-methylfuran-2-yl	[*]C1=CC=C(C)O1
 3-methylthiophen-2-yl	[*]C1=C(C)C=CS1
+p-CH3OC6H4	[*]C1=CC=C(OC)C=C1
+SF5	[*]S(F)(F)(F)(F)F
+Pr	[*]CCC
+1-Np	[*]C1=CC=CC2=CC=CC=C12
+2-Np	[*]C1=CC2=CC=CC=C2C=C1
